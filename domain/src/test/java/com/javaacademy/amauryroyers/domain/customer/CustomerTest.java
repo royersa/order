@@ -25,6 +25,8 @@ public class CustomerTest {
                 .withPhoneNumber("0404/00.00.00")
                 .build();
 
+        customer2.setId(customer.getId());
+
         boolean result = customer.equals(customer2);
 
         Assertions.assertThat(result).isTrue();
@@ -42,6 +44,6 @@ public class CustomerTest {
 
         String result = customer.toString();
 
-        Assertions.assertThat(result).isEqualTo("Customer{firstName='John', lastName='Doe', email='john.doe@unknown.com', address='404 Whatever Street, 1337 GHOSTTOWN', phoneNumber='0404/00.00.00'}");
+        Assertions.assertThat(result).isEqualTo("Customer{id=" + customer.getId() + ", firstName='John', lastName='Doe', email='john.doe@unknown.com', address='404 Whatever Street, 1337 GHOSTTOWN', phoneNumber='0404/00.00.00'}");
     }
 }

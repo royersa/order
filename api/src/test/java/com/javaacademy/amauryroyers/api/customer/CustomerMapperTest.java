@@ -28,7 +28,11 @@ public class CustomerMapperTest {
 
         CustomerDTO customerDTO = customerMapper.toDTO(customer);
 
-        Assertions.assertThat(customerDTO).isEqualToComparingFieldByField(customer);
+        Assertions.assertThat(customerDTO.getFirstName()).isEqualTo(customer.getFirstName());
+        Assertions.assertThat(customerDTO.getLastName()).isEqualTo(customer.getLastName());
+        Assertions.assertThat(customerDTO.getEmail()).isEqualTo(customer.getEmail());
+        Assertions.assertThat(customerDTO.getAddress()).isEqualTo(customer.getAddress());
+        Assertions.assertThat(customerDTO.getPhoneNumber()).isEqualTo(customer.getPhoneNumber());
     }
 
     @Test
@@ -42,6 +46,10 @@ public class CustomerMapperTest {
 
         Customer customer = customerMapper.toDomain(customerDTO);
 
-        Assertions.assertThat(customer).isEqualToComparingFieldByField(customerDTO);
+        Assertions.assertThat(customer.getFirstName()).isEqualTo(customerDTO.getFirstName());
+        Assertions.assertThat(customer.getLastName()).isEqualTo(customerDTO.getLastName());
+        Assertions.assertThat(customer.getEmail()).isEqualTo(customerDTO.getEmail());
+        Assertions.assertThat(customer.getAddress()).isEqualTo(customerDTO.getAddress());
+        Assertions.assertThat(customer.getPhoneNumber()).isEqualTo(customerDTO.getPhoneNumber());
     }
 }

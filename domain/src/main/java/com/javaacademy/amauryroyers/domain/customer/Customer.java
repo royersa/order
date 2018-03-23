@@ -1,8 +1,10 @@
 package com.javaacademy.amauryroyers.domain.customer;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class Customer {
+    private UUID id;
     private String firstName;
     private String lastName;
     private String email;
@@ -10,11 +12,21 @@ public class Customer {
     private String phoneNumber;
 
     private Customer(String firstName, String lastName, String email, String address, String phoneNumber){
+        id = UUID.randomUUID();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.address = address;
         this.phoneNumber = phoneNumber;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public Customer setId(UUID id){
+        this.id = id;
+        return this;
     }
 
     public String getFirstName() {
@@ -42,7 +54,8 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return Objects.equals(getFirstName(), customer.getFirstName()) &&
+        return Objects.equals(getId(), customer.getId()) &&
+                Objects.equals(getFirstName(), customer.getFirstName()) &&
                 Objects.equals(getLastName(), customer.getLastName()) &&
                 Objects.equals(getEmail(), customer.getEmail()) &&
                 Objects.equals(getAddress(), customer.getAddress()) &&
@@ -52,13 +65,14 @@ public class Customer {
     @Override
     public int hashCode() {
 
-        return Objects.hash(getFirstName(), getLastName(), getEmail(), getAddress(), getPhoneNumber());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getAddress(), getPhoneNumber());
     }
 
     @Override
     public String toString() {
         return "Customer{" +
-                "firstName='" + firstName + '\'' +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
