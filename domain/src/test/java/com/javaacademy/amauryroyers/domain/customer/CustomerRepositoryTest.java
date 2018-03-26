@@ -1,6 +1,6 @@
 package com.javaacademy.amauryroyers.domain.customer;
 
-import com.javaacademy.amauryroyers.domain.customer.databases.CustomerDatabase;
+import com.javaacademy.amauryroyers.domain.customer.database.CustomerDatabase;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,10 +8,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-
-import java.util.Arrays;
-
-import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CustomerRepositoryTest {

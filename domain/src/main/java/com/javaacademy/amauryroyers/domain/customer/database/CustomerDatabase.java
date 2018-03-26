@@ -1,10 +1,9 @@
-package com.javaacademy.amauryroyers.domain.customer.databases;
+package com.javaacademy.amauryroyers.domain.customer.database;
 
 import com.javaacademy.amauryroyers.domain.customer.Customer;
 
 import javax.inject.Named;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Named

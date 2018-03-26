@@ -1,4 +1,4 @@
-package com.javaacademy.amauryroyers.domain.customer.databases;
+package com.javaacademy.amauryroyers.domain.customer.database;
 
 import com.javaacademy.amauryroyers.domain.customer.Customer;
 import org.assertj.core.api.Assertions;

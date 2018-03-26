@@ -1,10 +1,9 @@
 package com.javaacademy.amauryroyers.domain.customer;
 
-import com.javaacademy.amauryroyers.domain.customer.databases.CustomerDatabase;
+import com.javaacademy.amauryroyers.domain.customer.database.CustomerDatabase;
 
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.List;
 
 @Named
 public class CustomerRepository {
