@@ -90,6 +90,18 @@ public class Item {
                 '}';
     }
 
+    public static Item copy(Item item){
+        Item copiedItem = ItemBuilder.item()
+                .withName(item.getName())
+                .withDescription(item.getDescription())
+                .withPrice(item.getPrice())
+                .withAmount(item.getAmount())
+                .build();
+        copiedItem.setId(item.getId());
+
+        return copiedItem;
+    }
+
     public static class ItemBuilder{
         private String name;
         private String description;

@@ -48,9 +48,13 @@ public class ItemDatabaseTest {
                 .withPrice(new BigDecimal("329.00"))
                 .withAmount(new BigInteger("10"))
                 .build();
-
-        Item item2 = item;
-        item2.setPrice(new BigDecimal("299.00"));
+        Item item2 = Item.ItemBuilder.item()
+                .withName("Nintendo Switch")
+                .withDescription("The brand new hybrid console!")
+                .withPrice(new BigDecimal("299.00"))
+                .withAmount(new BigInteger("10"))
+                .build();
+        item2.setId(item.getId());
 
         ItemDatabase itemDatabase = new ItemDatabase();
         itemDatabase.addItem(item);

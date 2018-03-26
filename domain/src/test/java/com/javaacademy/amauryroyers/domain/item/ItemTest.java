@@ -46,4 +46,19 @@ public class ItemTest {
 
         Assertions.assertThat(result).isEqualTo("Item{id=" + item.getId() + ", name='Nintendo Switch', description='The brand new hybrid console!', price=329.00, amount=10}");
     }
+
+    @Test
+    public void copy_givenAnItem_thenMakeACopyOfIt() {
+        Item item = Item.ItemBuilder.item()
+                .withName("Nintendo Switch")
+                .withDescription("The brand new hybrid console!")
+                .withPrice(new BigDecimal("329.00"))
+                .withAmount(new BigInteger("10"))
+                .build();
+
+        Item copyItem = Item.copy(item);
+        item.setPrice(new BigDecimal("299.00"));
+
+        Assertions.assertThat(copyItem).isNotEqualTo(item);
+    }
 }

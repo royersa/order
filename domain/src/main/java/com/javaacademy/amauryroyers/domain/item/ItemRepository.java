@@ -4,6 +4,7 @@ import com.javaacademy.amauryroyers.domain.item.database.ItemDatabase;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.math.BigInteger;
 import java.util.UUID;
 
 @Named
@@ -26,5 +27,9 @@ public class ItemRepository {
 
     public Item updateItem(Item updatedItem) {
        return itemDatabase.updateItem(updatedItem);
+    }
+
+    public ItemGroup createItemGroup(UUID itemID, BigInteger amount){
+        return new ItemGroup(itemID, amount);
     }
 }
