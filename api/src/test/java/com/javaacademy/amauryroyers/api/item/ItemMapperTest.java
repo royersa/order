@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.UUID;
 
 import static org.junit.Assert.*;
 
@@ -30,6 +31,7 @@ public class ItemMapperTest {
 
         ItemDTO itemDTO = itemMapper.toDTO(item);
 
+        Assertions.assertThat(itemDTO.getID()).isEqualTo(item.getId().toString());
         Assertions.assertThat(itemDTO.getName()).isEqualTo(item.getName());
         Assertions.assertThat(itemDTO.getDescription()).isEqualTo(item.getDescription());
         Assertions.assertThat(itemDTO.getPrice()).isEqualTo(item.getPrice().toString());
@@ -39,6 +41,7 @@ public class ItemMapperTest {
     @Test
     public void toDomain_givenAnItemDTO_thenMapAllFieldsToItem() {
         ItemDTO itemDTO = ItemDTO.itemDTO()
+                .withID("ffffffff-ffff-ffff-ffff-ffffffffffff")
                 .withName("Nintendo Switch")
                 .withDescription("The brand new hybrid console!")
                 .withPrice("329.00")
@@ -46,6 +49,7 @@ public class ItemMapperTest {
 
         Item item = itemMapper.toDomain(itemDTO);
 
+        Assertions.assertThat(item.getId()).isEqualTo(UUID.fromString(itemDTO.getID()));
         Assertions.assertThat(item.getName()).isEqualTo(itemDTO.getName());
         Assertions.assertThat(item.getDescription()).isEqualTo(itemDTO.getDescription());
         Assertions.assertThat(item.getPrice()).isEqualTo(new BigDecimal(item.getPrice().toString()));

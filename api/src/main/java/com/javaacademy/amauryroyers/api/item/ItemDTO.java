@@ -1,6 +1,7 @@
 package com.javaacademy.amauryroyers.api.item;
 
 public class ItemDTO {
+    private String id;
     private String name;
     private String description;
     private String price;
@@ -8,6 +9,11 @@ public class ItemDTO {
 
     public static ItemDTO itemDTO(){
         return new ItemDTO();
+    }
+
+    public ItemDTO withID(String id){
+        this.id = id;
+        return this;
     }
 
     public ItemDTO withName(String name){
@@ -28,6 +34,10 @@ public class ItemDTO {
     public ItemDTO withAmount(String amount){
         this.amount = amount;
         return this;
+    }
+
+    public String getID() {
+        return id;
     }
 
     public String getName() {

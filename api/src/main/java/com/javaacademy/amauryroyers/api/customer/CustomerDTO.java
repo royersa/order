@@ -1,6 +1,7 @@
 package com.javaacademy.amauryroyers.api.customer;
 
 public class CustomerDTO {
+    private String id;
     private String firstName;
     private String lastName;
     private String email;
@@ -9,6 +10,11 @@ public class CustomerDTO {
 
     public static CustomerDTO customerDTO(){
         return new CustomerDTO();
+    }
+
+    public CustomerDTO withID(String id){
+        this.id = id;
+        return this;
     }
 
     public CustomerDTO withFirstName(String firstName){
@@ -34,6 +40,10 @@ public class CustomerDTO {
     public CustomerDTO withPhoneNumber(String phoneNumber){
         this.phoneNumber = phoneNumber;
         return this;
+    }
+
+    public String getID() {
+        return id;
     }
 
     public String getFirstName() {

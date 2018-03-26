@@ -5,6 +5,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.UUID;
+
 import static org.junit.Assert.*;
 
 public class CustomerMapperTest {
@@ -28,6 +30,7 @@ public class CustomerMapperTest {
 
         CustomerDTO customerDTO = customerMapper.toDTO(customer);
 
+        Assertions.assertThat(customerDTO.getID()).isEqualTo(customer.getId().toString());
         Assertions.assertThat(customerDTO.getFirstName()).isEqualTo(customer.getFirstName());
         Assertions.assertThat(customerDTO.getLastName()).isEqualTo(customer.getLastName());
         Assertions.assertThat(customerDTO.getEmail()).isEqualTo(customer.getEmail());
@@ -38,6 +41,7 @@ public class CustomerMapperTest {
     @Test
     public void toDomain_givenACustomerDTO_thenMapAllFieldsToCustomer() {
         CustomerDTO customerDTO = CustomerDTO.customerDTO()
+                .withID("00000000-0000-0000-0000-000000000000")
                 .withFirstName("John")
                 .withLastName("Doe")
                 .withEmail("john.doe@unknown.com")
@@ -46,6 +50,7 @@ public class CustomerMapperTest {
 
         Customer customer = customerMapper.toDomain(customerDTO);
 
+        Assertions.assertThat(customer.getId()).isEqualTo(UUID.fromString(customerDTO.getID()));
         Assertions.assertThat(customer.getFirstName()).isEqualTo(customerDTO.getFirstName());
         Assertions.assertThat(customer.getLastName()).isEqualTo(customerDTO.getLastName());
         Assertions.assertThat(customer.getEmail()).isEqualTo(customerDTO.getEmail());

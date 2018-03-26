@@ -3,19 +3,27 @@ package com.javaacademy.amauryroyers.domain.item.database;
 import com.javaacademy.amauryroyers.domain.item.Item;
 
 import javax.inject.Named;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Named
 public class ItemDatabase {
-    private List<Item> itemList;
+    private Map<UUID, Item> itemMap;
 
     public ItemDatabase() {
-        itemList = new ArrayList<>();
+        itemMap = new HashMap<>();
     }
 
     public Item addItem(Item item){
-        itemList.add(item);
+        itemMap.put(item.getId(), item);
         return item;
+    }
+
+    public Item getItem(UUID id){
+        return itemMap.get(id);
+    }
+
+    public Item updateItem(Item updatedItem) {
+        itemMap.put(updatedItem.getId(), updatedItem);
+        return updatedItem;
     }
 }

@@ -20,4 +20,20 @@ public class CustomerDatabaseTest {
 
         Assertions.assertThat(customerDatabase.addCustomer(customer)).isEqualTo(customer);
     }
+
+    @Test
+    public void getCustomer_givenACustomerID_thenReturnTheCorrespondingCustomer() {
+        Customer customer = Customer.CustomerBuilder.customer()
+                .withFirstName("John")
+                .withLastName("Doe")
+                .withEmail("john.doe@unknown.com")
+                .withAddress("404 Whatever Street, 1337 GHOSTTOWN")
+                .withPhoneNumber("0404/00.00.00")
+                .build();
+
+        CustomerDatabase customerDatabase = new CustomerDatabase();
+        customerDatabase.addCustomer(customer);
+
+        Assertions.assertThat(customerDatabase.getCustomer(customer.getId())).isEqualTo(customer);
+    }
 }

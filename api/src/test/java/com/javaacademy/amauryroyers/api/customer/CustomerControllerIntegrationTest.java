@@ -31,13 +31,15 @@ public class CustomerControllerIntegrationTest {
     public void registerCustomer_givenAPostRequestOfACustomer_thenCreatesANewCustomer() {
         CustomerDTO customerDTO = new TestRestTemplate()
                 .postForObject(String.format("http://localhost:%s/%s", port, "customer"),
-                        customerDTO().withFirstName("John")
+                        customerDTO().withID("00000000-0000-0000-0000-000000000000")
+                                .withFirstName("John")
                                 .withLastName("Doe")
                                 .withEmail("john.doe@unknown.com")
                                 .withAddress("404 Whatever Street, 1337 GHOSTTOWN")
                                 .withPhoneNumber("0404/00.00.00"),
                         CustomerDTO.class);
 
+        Assertions.assertThat(customerDTO.getID()).isEqualTo("00000000-0000-0000-0000-000000000000");
         Assertions.assertThat(customerDTO.getFirstName()).isEqualTo("John");
         Assertions.assertThat(customerDTO.getLastName()).isEqualTo("Doe");
         Assertions.assertThat(customerDTO.getEmail()).isEqualTo("john.doe@unknown.com");
